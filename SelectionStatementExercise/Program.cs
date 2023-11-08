@@ -5,48 +5,71 @@ namespace SelectionStatementExercise
     public class Program
     {
 
-        
+
+        //string ageInput = Console.ReadLine();
+
+        //if (int.TryParse(ageInput, out yourAge)) 
+        //{
+        //    realAge = true;
+        //}
+        //else
+        //{
+        //    Console.WriteLine("Please enter a valid age");
+        //}
+
 
         static void Main(string[] args)
         {
-
-            //exercise 1
-
+            //--------------exercise 1-------------------
             var randomNumber = new Random();
             var favNumber = randomNumber.Next(1, 1000);
 
-            // The following code will allow the user to guess what your favorite number is
-            // (be sure to prompt the user what to input):
-            
-            
-            int userInput;
+            string userInput;
+            int userOutput;
+
             do
             {
                 Console.WriteLine("Guess what my favorite number is");
-                userInput = int.Parse(Console.ReadLine());
+                userInput = Console.ReadLine();
 
-                if (userInput == favNumber)
+                //if (userInput == null || userInput == "")
+                //{
+                //    Console.WriteLine("Not a valid input. Please Try again later");
+                //}
+
+                if (int.TryParse(userInput, out userOutput))
                 {
-                    Console.WriteLine("You guessed the number!");
+
+
+                    if (userOutput == favNumber)
+                    {
+                        Console.WriteLine("You guessed the number!");
+                    }
+                    else if (userOutput > favNumber)
+                    {
+                        Console.WriteLine("Too High");
+                    }
+                    else if (userOutput < favNumber)
+                    {
+                        Console.WriteLine("Too Low");
+                    }
+
                 }
-                else if (userInput > favNumber)
-                {
-                    Console.WriteLine("Too High");
-                }
+
                 else
                 {
-                    Console.WriteLine("Too Low");
+                    Console.WriteLine("Not a valid input. Please try again.");
                 }
 
-            }
-            while (userInput != favNumber);
+            } while (userOutput != favNumber);
+            //-------------------------------------------
 
-            //exercie 2
+            //--------------exercise 2-------------------
 
             Console.WriteLine("What is your favorite subject");
-            string userInput = Console.ReadLine();
+            string userInput2 = Console.ReadLine();
 
-            switch (userInput.ToLower())
+            switch (userInput2.ToLower())
             {
                 case "math":
                     Console.WriteLine("I love math");
@@ -64,8 +87,11 @@ namespace SelectionStatementExercise
                     Console.WriteLine("I love english");
                     break;
                 default:
-                    Console.WriteLine($"learning is fun, I have not heard of the subject {userInput} before.");
+                    Console.WriteLine($"learning is fun, I have not heard of the subject {userInput2} before.");
                     break;
             }
+
+        }
+
     }
 }
